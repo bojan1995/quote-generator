@@ -14,7 +14,9 @@ License
 Live Demo
 Check out the live demo here. https://bojan1995.github.io/quote-generator/
 
-Screenshots
+![Screenshot_1](https://github.com/bojan1995/quote-generator/assets/37152424/56791650-c9b5-4845-ac29-dc5103153267)
+![Screenshot_3](https://github.com/bojan1995/quote-generator/assets/37152424/a8424ba0-0154-4fde-be77-413b55e87a1f)
+
 
 Features
 Generates and displays random quotes.
