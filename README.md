@@ -35,7 +35,7 @@ To run the project locally, follow these steps:
 Clone the repository:
 bash
 Copy code
-git clone https://github.com/your-username/quote-generator.git
+git clone https://github.com/bojan1995/quote-generator.git
 cd quote-generator
 Open the index.html file in your preferred browser.
 Contributing
