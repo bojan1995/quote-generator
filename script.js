@@ -5,46 +5,18 @@ const twitterBtn = document.getElementById('twitter');
 const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
-
 let apiQuotes = [];
 
-// showing loading
+// Showing loading
 function loading() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
-// hide loading
-function complete(){
+
+// Hide loading
+function complete() {
     quoteContainer.hidden = false;
     loader.hidden = true;
-}
-
-function newQuote() {
-    loading();
-    // Pick a random quote from apiQuotes array
-   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
-    // check if author field is blank and replace it with unkkown
-    if(!quote.author){
-        authorText.textContent = 'Unknown';
-
-    } else 
-    {
-        authorText.textContent = quote.author;
-    }
-    //check the quote lenghe to determinate styleing
-    if(quote.text.length > 50){
-        quoteText.classList.add('long-quote');
-
-    } else {
-        quoteText.classList.remove('long-quote');
-
-    }
-   // set quote , hide loader
-
-
-   quoteText.textContent = quote.text;
-   
-    complete();
 }
 
 async function getQuotes() {
@@ -53,11 +25,31 @@ async function getQuotes() {
     try {
         const response = await fetch(apiUrl);
         apiQuotes = await response.json();
-
         newQuote();
     } catch (error) {
         console.error('Error fetching quotes:', error);
+        complete(); // Ensure loader is hidden even if there's an error
     }
+}
+
+function newQuote() {
+    // Pick a random quote from the apiQuotes array
+    const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
+
+    // Check if the author field is blank and replace it with 'Unknown'
+    const author = quote.author ? quote.author.replace(', type.fit', '') : 'Unknown';
+
+    // Check the quote length to determine styling
+    if (quote.text.length > 50) {
+        quoteText.classList.add('long-quote');
+    } else {
+        quoteText.classList.remove('long-quote');
+    }
+
+    // Set quote and author, hide loader
+    quoteText.textContent = quote.text;
+    authorText.textContent = author;
+    complete();
 }
 
 // Tweet quote function
@@ -70,5 +62,5 @@ function tweetQuote() {
 newQuoteBtn.addEventListener('click', newQuote);
 twitterBtn.addEventListener('click', tweetQuote);
 
-
+// Initial load
 getQuotes();
