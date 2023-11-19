@@ -94,4 +94,14 @@ button:active {
   .quote-text{
     font-size: 2.5rem;
   }
+  .button-container {
+    flex-direction: row; /* Change back to row layout on small screens */
+    justify-content: space-between; /* Spread buttons horizontally */
+  }
+
+  /* Adjust button styles for smaller screens if needed */
+  button {
+    font-size: 1rem; /* Adjust font size */
+    padding: 0.5rem 1rem; /* Adjust padding */
+  }
 }
